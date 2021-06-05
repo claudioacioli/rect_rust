@@ -5,6 +5,13 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    fn new (length:u16, width:u16) -> Rectangle {
+        Rectangle {
+            length,
+            width
+        }
+    }
+
     fn area (&self) -> u16 {
         self.width * self.length
     }
@@ -15,9 +22,9 @@ impl Rectangle {
 }
 
 fn main() {
-    let rect_a: Rectangle = build_rect(50, 30);
-    let rect_b: Rectangle = build_rect(10, 20);
-    let rect_c: Rectangle = build_rect(80, 10);
+    let rect_a: Rectangle = Rectangle::new(50, 30);
+    let rect_b: Rectangle = Rectangle::new(10, 20);
+    let rect_c: Rectangle = Rectangle::new(80, 10);
 
     println!(
         "The area of rectangle is {} square pixels.\n\
@@ -27,11 +34,4 @@ fn main() {
         rect_a.can_hold(&rect_b),
         rect_a.can_hold(&rect_c)
     );
-}
-
-fn build_rect(length:u16, width:u16) -> Rectangle {
-    Rectangle {
-        length,
-        width
-    }
 }
